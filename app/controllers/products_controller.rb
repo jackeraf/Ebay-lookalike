@@ -5,16 +5,19 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    username
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    username
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    username
   end
 
   # GET /products/1/edit
@@ -70,5 +73,14 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:title, :description, :price, :deadline)
+    end
+    def username
+      if user_signed_in?
+        @username= current_user.username.capitalize
+
+      else
+
+      end
+      
     end
 end
