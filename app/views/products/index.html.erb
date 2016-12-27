@@ -9,6 +9,7 @@
   
   <div class="row">
    <h1>Products</h1>
+   <br>
    <div class="col-lg-8 col-md-8 grid-products">
 
     <% @products.each do |product| %>
@@ -19,7 +20,7 @@
       <h2><a href="/products/<%= product.id%>"><%= product.title %></a></h2>
       <h4><%= product.description %></h4>
 
-      <p><%= product.price %></p>
+      <p class="price_index"><%= product.price %></p>
 
 
   </div>

@@ -8,5 +8,5 @@
 
 
 Product.create(title: "McBook", description: "Best PC for developers", price: 500,image_url: "mc-book.jpg",deadline: "12/11/2016")
-Product.create(title: "Winter jacket", description: "Keep it warm even in wintertime", price: 40,image_url: "winter-jacket.jpg",deadline: "18/04/2016")
+Product.create(title: "Winter jacket", description: "Keep it warm even in wintertime", price: 40,image_url: "winter-jacket.png",deadline: "18/04/2016")
 Product.create(title: "Rayban sunglasses", description: "Cool sunglasses for summertime", price: 60,image_url: "rayban.jpg",deadline: "09/12/2016")
