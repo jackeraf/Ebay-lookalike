@@ -21,23 +21,20 @@
 
       <p><%= product.price %></p>
 
+
   </div>
   <% end %>
 
-
+<br>
 
 </div>
 
 
     </div>
-          <% if current_user.present? && current_user.admin? %>
+          
               <h4><%= link_to 'New product', new_product_path %></h4>
-              <h4><%= link_to 'Edit', edit_product_path(product) %></h4>
-              <h4><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></h4>
-          <% else %>
-              <%  %>
-          <% end %>
+          
     </div>
 
-<br>
+
 

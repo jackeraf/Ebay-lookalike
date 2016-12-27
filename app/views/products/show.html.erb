@@ -1,24 +1,63 @@
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-5 col-md-5">
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+			<p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+				<img src="/assets/<%= @product.image_url %>" class="img-responsive"/>
+			</p>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @product.deadline %>
-</p>
+			<%= link_to 'Edit', edit_product_path(@product) %> |
+			<%= link_to 'Remove', @product, method: :delete, data: { confirm: 'Are you sure?' } %> |
+			<%= link_to 'Back', products_path %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+
+		</div>
+
+		<div class="col-lg-7 col-md-7">
+
+			<div class="text">
+				<p>
+					<strong>Title:</strong>
+					<%= @product.title %>
+				</p>
+
+				<p>
+					<strong>Description:</strong>
+					<%= @product.description %>
+				</p>
+
+				<p>
+					<strong>Image:</strong>
+					<%= @product.image_url %>
+				</p>
+
+				<p>
+					<strong>Price:</strong>
+					<%= @product.price %>
+				</p>
+
+				<p>
+					<strong>Category:</strong>
+					<%= @category_product  %>
+				</p>
+
+				<p>
+					<strong>Subcategory:</strong>
+					<% %>
+				</p>
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+</div>
+
+
