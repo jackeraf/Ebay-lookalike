@@ -17,7 +17,7 @@
 
 @media (max-width: 769px) {
     #top{
-        padding-top: 40px;
+        // padding-top: 40px;
 		
     }
 }   
@@ -26,6 +26,12 @@
     a{
         padding-top: 40px;
 		float: none!important;
+		
+    }
+}   
+@media (max-width: 769px) {
+    .navbar-brand{
+        line-height: 50px;
 		
     }
 }   
