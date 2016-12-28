@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+
+    @category= @product.category.name
+    
     username
   end
 
