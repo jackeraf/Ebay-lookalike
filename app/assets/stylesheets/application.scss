@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+
+@media (max-width: 769px) {
+    #top{
+        padding-top: 40px;
+		
+    }
+}   
+
+@media (max-width: 769px) {
+    a{
+        padding-top: 40px;
+		float: none!important;
+		
+    }
+}   
+
