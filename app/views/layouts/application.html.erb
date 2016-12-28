@@ -35,8 +35,8 @@
         <span class="caret"></span></a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
       <% Category.all.each do |category| %>
-      <li class="category_selected"><%= category.name %>
-        <input type="hidden" name="category_id" value="<%= category.id %>" id="category_id">
+      <li class="<%= 'active' if params[:category] == category.name %>">
+        <%= link_to category.name, products_path(category: category.name), class: "link" %>
       </li>
 
       <% end %>
