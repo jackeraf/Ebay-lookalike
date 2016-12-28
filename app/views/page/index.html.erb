@@ -5,7 +5,8 @@
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <% @images.each do |image| %>
+          <li data-target="#myCarousel" data-slide-to="<%= image %>" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
           <li data-target="#myCarousel" data-slide-to="3"></li>
@@ -13,16 +14,10 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-        <% @images.each do |image| %>
-          <div class="item active">
-            <%= image_tag(
 
-              image, :size => '600x400', :alt => image[ 'alt' ]
-
-            ) %>
-
+        <div class="item <%= 'active' if image == @images[0] %>">          
+            <%= image_tag image, :size => '600x400' %>
           </div>
-        
           <% end %>
 
 
