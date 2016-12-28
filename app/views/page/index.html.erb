@@ -13,13 +13,17 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
+        <% @images.each do |image| %>
           <div class="item active">
-            <%= image_tag 'mc-book.jpg' %>
-          </div>
+            <%= image_tag(
 
-          <div class="item">
-            <%= image_tag 'rayban.jpg' %>
+              image, :size => '600x400', :alt => image[ 'alt' ]
+
+            ) %>
+
           </div>
+        
+          <% end %>
 
 
         </div>
