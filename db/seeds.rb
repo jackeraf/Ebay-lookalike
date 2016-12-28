@@ -7,6 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Product.create(title: "McBook", description: "Best PC for developers", price: 500,image_url: "mc-book.jpg",deadline: "12/11/2016")
-Product.create(title: "Winter jacket", description: "Keep it warm even in wintertime", price: 40,image_url: "winter-jacket.png",deadline: "18/04/2016")
-Product.create(title: "Rayban sunglasses", description: "Cool sunglasses for summertime", price: 60,image_url: "rayban.jpg",deadline: "09/12/2016")
+category1 = Category.create(name: "computers")
+category2 = Category.create(name: "mobile")
+category3 = Category.create(name: "clothes")
+category4 = Category.create(name: "accesories")
+
+Product.create(category: category1, title: "McBook", description: "Best PC for developers", price: 500,image_url: "mc-book.jpg", user_id: 1, deadline: "12/11/2016")
+Product.create(category: category3,title: "Winter jacket", description: "Keep it warm even in wintertime", price: 40,image_url: "winter-jacket.png", user_id: 1, deadline: "18/04/2016")
+Product.create(category: category4,title: "Rayban sunglasses", description: "Cool sunglasses for summertime", price: 60,image_url: "rayban.jpg", user_id: 1, deadline: "09/12/2016")
+
+User.create(id: 1, email: "a@gmail.com", username: "jarek", password: "123456")
