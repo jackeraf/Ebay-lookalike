@@ -16,8 +16,8 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
          <% @images.each do |image| %>
-        <div class="item <%= 'active' if image == @images[0] %>">          
-            <%= image_tag image, :size => '600x400' %>
+        <div class="item <%= 'active' if image == @images[0] %> custom-image">          
+            <%= image_tag image %>
           </div>
           <% end %>
 
