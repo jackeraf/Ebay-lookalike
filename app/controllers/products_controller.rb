@@ -4,7 +4,18 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.limit(10).order(:price => 'ASC')
+    if params[:category].blank?
+      # if it's blank, so if nothing has been selected, 
+      # it'll display all the products
+      @products = Product.limit(10).order(:price => 'ASC')
+    else
+      @category_id= Category.find_by(name: params[:category]).id
+      @products = Product.where(:category_id => @category_id)
+      # @category_id is the id that has been taken above 
+      # thanks to the name sent by the params
+      # and we are going to find all the products of the same id
+    end
+    
     username
   end
 
