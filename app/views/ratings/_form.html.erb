@@ -8,12 +8,9 @@
 <%= f.button :submit, class: "btn-custom2"  %>
 <% end %>
 
-<script type="text/javascript">
-// this is the not read only script
-	$("#rating-form").raty({
-		path: '/assets',
-		scoreName: 'rating[rating]'
-	});
-
-
+<script>
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
 </script>

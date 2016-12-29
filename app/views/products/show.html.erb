@@ -66,14 +66,23 @@
 		</div>
 </div>
 
-<script type="text/javascript">
-	$(".rating-star").raty({
-		readOnly: true,
-		score: function(){
-			return $(this).attr('data-score');
-		},
-		path: '/assets'
-	});
 
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
 
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
 </script>
