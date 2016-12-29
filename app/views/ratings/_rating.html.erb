@@ -1,6 +1,16 @@
 
 <div class="rating">
 	<p><%= rating.rating%></p>
-	
+
+	<% if  user_signed_in? %>
+	 <% if rating.user_id == current_user.id %>
+	 	<div class="links btn-group">
+	 		<%= link_to "Edit", edit_product_rating_path(rating.product, rating), class: "btn btn-custom" %>
+	 		<%= link_to "Delete", product_rating_path(rating.product, rating), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-custom" %>
+
+	 	</div>
+	 <% end %>
+		
+	<% end %>
 
 </div>

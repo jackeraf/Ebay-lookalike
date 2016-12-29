@@ -1,0 +1,14 @@
+
+<div class="col-md-10 col-md-offset-1">
+	<div class="edit-review-form">
+	<h1> Edit rating </h1>
+		<%= simple_form_for([@product, @rating]) do |f| %>
+
+		<div id= "rating-form">
+			<%= f.input :rating  %>
+		</div>
+
+		<%= f.button :submit, class: "btn-custom2"  %>
+		<% end %>
+	</div>
+</div>

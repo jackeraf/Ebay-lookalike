@@ -1,5 +1,6 @@
 class RatingsController < ApplicationController
 	before_action :find_product
+	before_action :find_rating, only: [:edit, :update, :destroy]
 
 	def new
 		
@@ -22,7 +23,21 @@ class RatingsController < ApplicationController
 			render "new"
 		end
 	end
+	def edit
+		
+	end
+	def update
+		if @rating.update(rating_params)
+			redirect_to product_path(@product)
+		else
+			render "edit"
+		end
+	end
 
+	def destroy
+		@rating.destroy
+		redirect_to product_path(@product)
+	end
 	private
 
 	def rating_params
@@ -33,5 +48,8 @@ class RatingsController < ApplicationController
 	def find_product
 		@product= Product.find(params[:product_id])
 		
+	end
+	def find_rating
+		@rating= Rating.find(params[:id])
 	end
 end
