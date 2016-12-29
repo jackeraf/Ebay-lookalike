@@ -1,6 +1,6 @@
 
 <div class="rating">
-	<p><%= rating.rating%></p>
+	<div class="rating-star" data-score= "<%= rating.rating%>"></div>
 
 	<% if  user_signed_in? %>
 	 <% if rating.user_id == current_user.id %>

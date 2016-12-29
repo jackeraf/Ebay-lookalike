@@ -2,8 +2,18 @@
 <%= simple_form_for([@product, @product.ratings.build]) do |f| %>
 
 <div id= "rating-form">
-	<%= f.input :rating  %>
+	<label>Rating</label>
 </div>
 
 <%= f.button :submit, class: "btn-custom2"  %>
 <% end %>
+
+<script>
+// this is the not read only script
+	$("#rating-form").raty({
+		path: '/assets',
+		scoreName: 'rating[rating]'
+	});
+
+
+</script>
