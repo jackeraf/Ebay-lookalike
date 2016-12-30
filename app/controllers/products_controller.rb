@@ -51,8 +51,14 @@ class ProductsController < ApplicationController
       @average_rating = 0
     else
       @average_rating = @product.ratings.average(:rating).round(2) 
-    end      
+    end
+
+          
     @category= @product.category.name
+    
+    @category_product= @product.category.id
+    # category_id= Category.find_by(name: params[:category]).id
+    @products = Product.where(:category_id => @category_product)
     
     username
   end
