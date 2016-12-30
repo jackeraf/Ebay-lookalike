@@ -58,7 +58,7 @@
         
           <% end %>
     </ul>
-    <% if current_page?(products_path) || (product_path) %>
+    <% if controller.controller_name == 'products' %>
       <div class="col-sm-3 col-md-3 pull-right">
         <form class="navbar-form" role="search">
         <div class="input-group">
