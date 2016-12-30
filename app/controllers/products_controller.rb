@@ -6,10 +6,19 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    
     if params[:category].blank?
       # if it's blank, so if nothing has been selected, 
       # it'll display all the products
+      if params[:search_term].present?
+      
+      @products = Product.where(["title LIKE ?", "%#{params[:search_term]}%"])
+      
+      else
       @products = Product.limit(10).order(:price => 'ASC')
+
+      end
+      
     else
       @category_id= Category.find_by(name: params[:category]).id
       @products = Product.where(:category_id => @category_id)
