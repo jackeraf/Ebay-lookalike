@@ -14,6 +14,13 @@ class ProductsController < ApplicationController
       
       @products = Product.where(["title LIKE ?", "%#{params[:search_term]}%"])
       
+      # Product.where("title like ?", "%#{name}%")
+      # For example:
+
+      # %Manhattan will get you: Love in Manhattan
+      # Manhattan% will get:  Manhattan and Company
+      # %Manhattan% will get you both: [Love in Manhattan, Manhattan and Company]
+      
       else
       @products = Product.limit(10).order(:price => 'ASC')
 
