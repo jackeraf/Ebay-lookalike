@@ -1,6 +1,8 @@
 class RatingsController < ApplicationController
 	before_action :find_product
 	before_action :find_rating, only: [:edit, :update, :destroy]
+	before_action :authenticate_user!, only: [:new, :edit]
+	# if the user is not sign in he cannot access to the product/id/ratings/edit url
 
 	def new
 		

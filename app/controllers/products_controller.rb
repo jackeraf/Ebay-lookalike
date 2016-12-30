@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit]
+  # if the user is not sign in he cannot access to the product/id/edit url
 
   # GET /products
   # GET /products.json
@@ -23,6 +25,11 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
 
+    if @product.ratings.blank?
+      @average_rating = 0
+    else
+      @average_rating = @product.ratings.average(:rating).round(2) 
+    end      
     @category= @product.category.name
     
     username

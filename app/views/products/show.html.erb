@@ -45,6 +45,12 @@
 					<strong>Category:</strong>
 					<%= @category  %>
 				</p>
+				
+				<p class="avg-rating">
+					<strong> Average rating </strong>
+					<div class="average-review-rating" data-score="<%= @average_rating %>"></div>
+				<span class="number-of-reviews"> <em> From: </em> <%= @product.ratings.count %> ratings </span>
+				</p>
 
 
 			</div>
