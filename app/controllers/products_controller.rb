@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
       @average_rating = @product.ratings.average(:rating).round(2) 
     end
 
-    @products = Category.find(@product.category.id).products.select{ |p| p.id != @product.id }
+    @similar_products = Category.find(@product.category.id).products.select{ |p| p.id != @product.id }
    
     
     

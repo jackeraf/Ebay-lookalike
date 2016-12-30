@@ -75,11 +75,11 @@
 <div class="container">
 	<div class="row">
 	<h2>Similar products</h2>
-		<% if @products.nil? %>
+		<% if @similar_products.nil? %>
 
     <h4>No similar products found</h4>
     <% else %>
-		<% @products.each do |product| %>
+		<% @similar_products.each do |product| %>
     <div class="col-lg-4 col-md-4">
 
 

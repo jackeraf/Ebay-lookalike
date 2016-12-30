@@ -38,4 +38,20 @@
   </div>
 </div>
 
+<br>
+<h1 class="latest_products">Latest products</h1>
+<br>
 
+<div class="container">
+  <div class="row">
+    <% @latest_products.each do |product| %>
+    <div class="col-lg-4 col-md-4">
+
+
+      <a href="/products/<%= product.id%>"><img style="max-height:220px!important" src="/assets/<%= product.image_url %>" class="img-responsive"/></a>
+      
+
+    </div>
+    <% end %>
+  </div>
+</div>
