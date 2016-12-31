@@ -72,17 +72,22 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<div class="ratings">
+			
+			<div class="bids">
 				<h1> Place your bet: </h1>
 				
-				<% if !@highest_bid.empty? %>
+				<% if !@highest_bid.nil? %>
 					
 				
-					<% form_tag product_ratings_path(@product), :method => :post do %>
+					<%= form_tag product_bids_path(@product), :method => :post do %>
 						<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<% @highest_bid.amount %>" />
 						<input name="commit" type="submit" value="Bid product" class="btn btn-danger" />
 					<% end %>
 				<% else %>
+					<%= form_tag product_bids_path(@product), :method => :post do %>
+							<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<% @product.price %>" />
+							<%= submit_tag("Bid product") %>
+					<% end %>
 				<% end %>
 			</div>
 		</div>
