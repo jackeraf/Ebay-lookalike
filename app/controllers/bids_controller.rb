@@ -9,9 +9,11 @@ class BidsController < ApplicationController
     @bid.product_id = @product.id
   	@bid.user_id = current_user.id
 
-  	
+
   	@bids = Bid.all.order("created_at DESC") 
+		@highest_bid = @bids.limit(1)
 		@bids = @bids.limit(5)
+		
 
     if @bid.save
     	redirect_to  new_product_bid_path

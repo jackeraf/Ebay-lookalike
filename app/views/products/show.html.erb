@@ -11,12 +11,12 @@
 				<img src="/assets/<%= @product.image_url %>" class="img-responsive"/>
 			</p>
 			<%  if  user_signed_in? %>
-				<%  if  @product.user_id== current_user.id %>
+			<%  if  @product.user_id== current_user.id %>
 
-				
-				<%= link_to 'Edit', edit_product_path(@product) %> |
-				<%= link_to 'Remove', @product, method: :delete, data: { confirm: 'Are you sure?' } %> |
-				<% end %>
+
+			<%= link_to 'Edit', edit_product_path(@product) %> |
+			<%= link_to 'Remove', @product, method: :delete, data: { confirm: 'Are you sure?' } %> |
+			<% end %>
 			<% end %>
 			<%= link_to 'Back', products_path %>
 
@@ -49,7 +49,7 @@
 				<p class="avg-rating">
 					<strong> Average rating </strong>
 					<div class="average-review-rating" data-score="<%= @average_rating %>"></div>
-				<span class="number-of-reviews"> <em> From: </em> <%= @product.ratings.count %> ratings </span>
+					<span class="number-of-reviews"> <em> From: </em> <%= @product.ratings.count %> ratings </span>
 				</p>
 
 
@@ -60,57 +60,74 @@
 		
 	</div>
 	<div class="row">
-			<div class="col-md-12">
-				<div class="ratings">
-					<h1> Ratings </h1>
-					<%= render @product.ratings %>
-					<div>
-						<%= link_to "Rate product", new_product_rating_path(@product), class: "btn btn-info" %>
-					</div>
+		<div class="col-md-12">
+			<div class="ratings">
+				<h1> Ratings </h1>
+				<%= render @product.ratings %>
+				<div>
+					<%= link_to "Rate product", new_product_rating_path(@product), class: "btn btn-info" %>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="ratings">
+				<h1> Place your bet: </h1>
+				
+				<% if !@highest_bid.empty? %>
+					
+				
+					<% form_tag product_ratings_path(@product), :method => :post do %>
+						<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<% @highest_bid.amount %>" />
+						<input name="commit" type="submit" value="Bid product" />
+					<% end %>
+				<% else %>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="container">
 	<div class="row">
-	<h2>Similar products</h2>
+		<h2>Similar products</h2>
 		<% if @similar_products.nil? %>
 
-    <h4>No similar products found</h4>
-    <% else %>
+		<h4>No similar products found</h4>
+		<% else %>
 		<% @similar_products.each do |product| %>
-    <div class="col-lg-4 col-md-4">
+		<div class="col-lg-4 col-md-4">
 
 
-      <a href="/products/<%= product.id%>"><img style="max-height:220px!important" src="/assets/<%= product.image_url %>" class="img-responsive"/></a>
-      <h4 style="text-align: center;"><a href="/products/<%= product.id%>"><%= product.title %></a></h4>
-      
-    </div>
-    
-    <% end %>
-    <% end %>
-    
+			<a href="/products/<%= product.id%>"><img style="max-height:220px!important" src="/assets/<%= product.image_url %>" class="img-responsive"/></a>
+			<h4 style="text-align: center;"><a href="/products/<%= product.id%>"><%= product.title %></a></h4>
+
+		</div>
+
+		<% end %>
+		<% end %>
+
 	</div>
 </div>
 
 
 <script>
-  $('.review-rating').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
 </script>
 
 <script>
-  $('.average-review-rating').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
+	$('.average-review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
 </script>
