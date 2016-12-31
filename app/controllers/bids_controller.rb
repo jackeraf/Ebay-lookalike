@@ -5,8 +5,9 @@ class BidsController < ApplicationController
 
 
 	def create
-		byebug
-		@bid = Bid.new(bid_params)
+		# byebug
+		# @bid = Bid.new(bid_params)
+		@bid = Bid.new
 		@bid.amount = params[:quantity].to_i
 		@bid.product_id = params[:product_id].to_i
 		@bid.user_id = current_user.id
