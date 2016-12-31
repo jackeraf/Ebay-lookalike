@@ -80,12 +80,12 @@
 					
 				
 					<%= form_tag product_bids_path(@product), :method => :post do %>
-						<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<% @highest_bid.amount %>" />
+						<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<%= @highest_bid.amount %>" />
 						<input name="commit" type="submit" value="Bid product" class="btn btn-danger" />
 					<% end %>
 				<% else %>
 					<%= form_tag product_bids_path(@product), :method => :post do %>
-							<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<% @product.price %>" />
+							<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<%= @product.price %>" />
 							<input name="commit" type="submit" value="Bid product" class="btn btn-danger" />
 					<% end %>
 				<% end %>
