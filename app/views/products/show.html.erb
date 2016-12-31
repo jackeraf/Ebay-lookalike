@@ -86,7 +86,7 @@
 				<% else %>
 					<%= form_tag product_bids_path(@product), :method => :post do %>
 							<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<% @product.price %>" />
-							<%= submit_tag("Bid product") %>
+							<input name="commit" type="submit" value="Bid product" class="btn btn-danger" />
 					<% end %>
 				<% end %>
 			</div>
