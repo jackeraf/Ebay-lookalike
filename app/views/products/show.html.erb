@@ -86,19 +86,12 @@
 			<div class="bids">
 				<h1> Place your bet: </h1>
 				
-				<% if !@highest_bid.nil? %>
-					
-				
-					<%= form_tag product_bids_path(@product), :method => :post do %>
-						<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<%= @highest_bid.amount %>" />
-						<input name="commit" type="submit" value="Bid product" class="btn btn-danger rate_product" />
-					<% end %>
-				<% else %>
+			
 					<%= form_tag product_bids_path(@product), :method => :post do %>
 							<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<%= @product.price %>" />
 							<input name="commit" type="submit" value="Bid product" class="btn btn-danger rate_product" />
 					<% end %>
-				<% end %>
+				
 			</div>
 		</div>
 	</div>

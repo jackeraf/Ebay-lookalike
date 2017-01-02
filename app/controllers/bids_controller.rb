@@ -12,18 +12,12 @@ class BidsController < ApplicationController
 		@bid.product_id = params[:product_id].to_i
 		@bid.user_id = current_user.id
 
-
-		@bids = Bid.all.order("created_at DESC") 
-		@highest_bid = @bids.limit(1)
-		@bids = @bids.limit(5)
-		
-
 		if @bid.save
 			redirect_to  product_path(@product)
 			# redirect_to  new_product_bid_path
 		else
 			if @bid.errors
-				flash[:error] = @bid.errors.full_messages[0]
+				flash[:error] = @bid.errors
 			end
 			redirect_to  product_path(@product)
 		end
