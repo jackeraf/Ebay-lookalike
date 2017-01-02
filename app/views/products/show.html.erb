@@ -72,6 +72,7 @@
 				<h1> Ratings </h1>
 				<%= render @product.ratings %>
 				<div>
+
 					<%= link_to "Rate product", new_product_rating_path(@product), class: "btn btn-info" %>
 				</div>
 			</div>
@@ -88,12 +89,12 @@
 				
 					<%= form_tag product_bids_path(@product), :method => :post do %>
 						<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<%= @highest_bid.amount %>" />
-						<input name="commit" type="submit" value="Bid product" class="btn btn-danger" />
+						<input name="commit" type="submit" value="Bid product" class="btn btn-danger rate_product" />
 					<% end %>
 				<% else %>
 					<%= form_tag product_bids_path(@product), :method => :post do %>
 							<input id="quantity" min="<% @product.price %>" name="quantity" type="number" value= "<%= @product.price %>" />
-							<input name="commit" type="submit" value="Bid product" class="btn btn-danger" />
+							<input name="commit" type="submit" value="Bid product" class="btn btn-danger rate_product" />
 					<% end %>
 				<% end %>
 			</div>
@@ -142,4 +143,16 @@
 		},
 		path: '/assets/'
 	});
+</script>
+
+<script type="text/javascript">
+	$(".rate_product").click(function(e){
+		e.preventDefault();
+		
+		<% if !user_signed_in? %>
+			alert("You should sign in to bid");
+			// $('.rate_product').prop('disabled', true);
+		<% end %>
+	})
+
 </script>
