@@ -7,37 +7,42 @@ class BidsController < ApplicationController
 	def create
 		# byebug
 		# @bid = Bid.new(bid_params)
-		@bid = Bid.new
-		@bid.amount = params[:quantity].to_i
-		@bid.product_id = params[:product_id].to_i
-		@bid.user_id = current_user.id
+		if params[:quantity].to_i < @product.price
 
-		if @bid.save
-			redirect_to  product_path(@product)
-			# redirect_to  new_product_bid_path
-		else
-			if @bid.errors
-				flash[:error] = @bid.errors
-			end
-			redirect_to  product_path(@product)
+			redirect_to product_path(@product), notice: "Your bid must be higher"
+		elsif params[:quantity].to_i >= @product.price
+			@bid = Bid.new
+			@bid.amount = params[:quantity].to_i
+			@bid.product_id = params[:product_id].to_i
+			@bid.user_id = current_user.id
+
+				if @bid.save
+					redirect_to  product_path(@product)
+				# redirect_to  new_product_bid_path
+				else
+				if @bid.errors
+					flash[:error] = @bid.errors
+				end
+				redirect_to  product_path(@product)
+				end
 		end
 
 	end
 
-	private
+private
 
-	def bid_params
-		params.require(:bid).permit(:amount)
-	end
+def bid_params
+	params.require(:bid).permit(:amount)
+end
 
-	def find_bid
-		@bid = Bid.find_by(id: params[:id])
+def find_bid
+	@bid = Bid.find_by(id: params[:id])
 
-	end
+end
 
-	def find_product
-		@product = Product.find_by(id: params[:product_id])
-	end
+def find_product
+	@product = Product.find_by(id: params[:product_id])
+end
 
 end
 
