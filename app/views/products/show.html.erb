@@ -58,7 +58,7 @@
 					<% bids_sorted= @product.bids.sort_by {|obj| obj.amount}.reverse  %>
 					<% bids_sorted[0..4].each do |bid| %>
 					
-					<p style="margin-left: 0!important;"><em> User: </em><%= User.find(bid.user_id.to_i).username.capitalize  %> &nbsp | &nbsp <%= bid.amount  %></p> 
+					<p style="margin-left: 0!important;"><em> User: </em><%= User.find(bid.user_id.to_i).username.capitalize  %> &nbsp | &nbsp <%= bid.amount  %> € </p> 
 					<% end  %>
 				</div>
 
