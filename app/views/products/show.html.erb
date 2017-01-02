@@ -55,7 +55,9 @@
 				
 				<div>
 					<strong>Top 5 bids:</strong>
-					<% @product.bids.each do |bid|  %>
+					<% bids_sorted= @product.bids.sort_by {|obj| obj.amount}.reverse  %>
+					<% bids_sorted[0..4].each do |bid| %>
+					
 					<p style="margin-left: 0!important;"><em> User: </em><%= User.find(bid.user_id.to_i).username.capitalize  %> &nbsp | &nbsp <%= bid.amount  %></p> 
 					<% end  %>
 				</div>
@@ -152,7 +154,7 @@
 			e.preventDefault();
 			alert("You should sign in to bid");
 			// $('.rate_product').prop('disabled', true);
-		
+
 		<% end %>
 	})
 
