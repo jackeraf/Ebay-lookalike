@@ -51,13 +51,14 @@
 					<div class="average-review-rating" data-score="<%= @average_rating %>"></div>
 					<span class="number-of-reviews"> <em> From: </em> <%= @product.ratings.count %> ratings </span>
 				</p>
-
-				<p>
+				
+				
+				<div>
 					<strong>Top 5 bids:</strong>
 					<% @product.bids.each do |bid|  %>
-					<em> User: </em><%= User.find(bid.user_id.to_i).username.capitalize  %> &nbsp | &nbsp <%= bid.amount  %> 
+					<p style="margin-left: 0!important;"><em> User: </em><%= User.find(bid.user_id.to_i).username.capitalize  %> &nbsp | &nbsp <%= bid.amount  %></p> 
 					<% end  %>
-				</p>
+				</div>
 
 			</div>
 
