@@ -7,25 +7,33 @@ class BidsController < ApplicationController
 	def create
 		# byebug
 		# @bid = Bid.new(bid_params)
-		if params[:quantity].to_i < @product.price
+		bids_sorted= @product.bids.sort_by {|obj| obj.amount}.reverse
+		highest_bid= bids_sorted[0].amount
+		if highest_bid.nil?
+			if params[:quantity].to_i <= @product.price
 
-			redirect_to product_path(@product), notice: "Your bid must be higher"
-		elsif params[:quantity].to_i >= @product.price
-			@bid = Bid.new
-			@bid.amount = params[:quantity].to_i
-			@bid.product_id = params[:product_id].to_i
-			@bid.user_id = current_user.id
-
-				if @bid.save
-					redirect_to  product_path(@product)
-				# redirect_to  new_product_bid_path
-				else
-				if @bid.errors
-					flash[:error] = @bid.errors
-				end
-				redirect_to  product_path(@product)
-				end
+				redirect_to product_path(@product), notice: "Your bid must be higher"
+			end
 		end
+			if params[:quantity].to_i <= highest_bid
+					redirect_to product_path(@product), notice: "Your bid must be higher"
+			elsif params[:quantity].to_i >= @product.price
+				@bid = Bid.new
+				@bid.amount = params[:quantity].to_i
+				@bid.product_id = params[:product_id].to_i
+				@bid.user_id = current_user.id
+
+					if @bid.save
+						redirect_to  product_path(@product)
+					# redirect_to  new_product_bid_path
+					else
+					if @bid.errors
+						flash[:error] = @bid.errors
+					end
+					redirect_to  product_path(@product)
+					end
+			end
+		
 
 	end
 
