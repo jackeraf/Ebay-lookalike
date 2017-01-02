@@ -76,11 +76,11 @@
 		<div class="col-md-12">
 			<div class="ratings">
 				<h1> Ratings </h1>
-				<% @product.ratings.each do |rating| %>
+				<% @product.ratings.each.with_index  do |rating, index| %>
 				<em> User: </em><%= User.find(rating.user_id.to_i).username.capitalize  %>
-					<% end %>
-				 <%= render @product.ratings %>
-				
+				<%= render @product.ratings[index] %>
+				<% end %>
+					
 				<div>
 
 					<%= link_to "Rate product", new_product_rating_path(@product), class: "btn btn-info" %>
