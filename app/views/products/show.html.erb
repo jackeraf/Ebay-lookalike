@@ -40,10 +40,14 @@
 					<strong>Price:</strong>
 					<%= @product.price %>
 				</p>
+				<p>
+					<strong>Deadline:</strong>
+					<%= @product.deadline %>
+				</p>
 
 				<p>
 					<strong>Category:</strong>
-					<%= @category  %>
+					<%= @product.category.name.capitalize  %>
 				</p>
 				
 				<p class="avg-rating">
