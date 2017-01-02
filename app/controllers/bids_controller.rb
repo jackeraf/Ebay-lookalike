@@ -18,6 +18,7 @@ class BidsController < ApplicationController
 			if params[:quantity].to_i <= highest_bid
 					redirect_to product_path(@product), notice: "Your bid must be higher"
 			elsif params[:quantity].to_i >= @product.price
+				if Time.now < @product.deadline
 				@bid = Bid.new
 				@bid.amount = params[:quantity].to_i
 				@bid.product_id = params[:product_id].to_i
@@ -32,6 +33,9 @@ class BidsController < ApplicationController
 					end
 					redirect_to  product_path(@product)
 					end
+				else
+					redirect_to product_path(@product), notice: "Too late to place your bet!"
+				end
 			end
 		
 
