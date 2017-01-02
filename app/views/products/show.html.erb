@@ -147,11 +147,12 @@
 
 <script type="text/javascript">
 	$(".rate_product").click(function(e){
-		e.preventDefault();
 		
 		<% if !user_signed_in? %>
+			e.preventDefault();
 			alert("You should sign in to bid");
 			// $('.rate_product').prop('disabled', true);
+		
 		<% end %>
 	})
 
