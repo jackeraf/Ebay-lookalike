@@ -52,6 +52,12 @@
 					<span class="number-of-reviews"> <em> From: </em> <%= @product.ratings.count %> ratings </span>
 				</p>
 
+				<p>
+					<strong>Top 5 bids:</strong>
+					<% @product.bids.each do |bid|  %>
+					<em> User: </em><%= User.find(bid.user_id.to_i).username.capitalize  %> &nbsp | &nbsp <%= bid.amount  %> 
+					<% end  %>
+				</p>
 
 			</div>
 
