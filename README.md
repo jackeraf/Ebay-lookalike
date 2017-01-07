@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Site where you can bid and give star rating to each product. It also has some cool features like a searchbox only showing if the controller is the proper one!
 
-Things you may want to cover:
+View of Home page:
 
-* Ruby version
+<p align="center">
+    <img src="http://i68.tinypic.com/e19312.png">
+	
+</p>
 
-* System dependencies
 
-* Configuration
+View of products show:
 
-* Database creation
+<p align="center">
+    <img src="http://i68.tinypic.com/250ml1l.png">
+	
+</p>
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
