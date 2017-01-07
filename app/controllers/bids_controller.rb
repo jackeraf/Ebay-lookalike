@@ -7,18 +7,50 @@ class BidsController < ApplicationController
 	def create
 		# byebug
 		# @bid = Bid.new(bid_params)
-		bids_sorted= @product.bids.sort_by {|obj| obj.amount}.reverse
-		highest_bid= bids_sorted[0].amount
-		if highest_bid.nil?
+		if @product.bids.empty?
 			if params[:quantity].to_i <= @product.price
 
 				redirect_to product_path(@product), notice: "Your bid must be higher"
+			
+			else
+				time_condition
 			end
-		end
+			
+
+		else
+			bids_sorted= @product.bids.sort_by {|obj| obj.amount}.reverse
+			highest_bid= bids_sorted[0].amount
+			
 			if params[:quantity].to_i <= highest_bid
-					redirect_to product_path(@product), notice: "Your bid must be higher"
-			elsif params[:quantity].to_i >= @product.price
-				if Time.now < @product.deadline
+
+				redirect_to product_path(@product), notice: "Your bid must be higher"
+			
+			elsif params[:quantity].to_i > highest_bid
+				time_condition
+
+			end
+		
+			
+		end
+
+	end
+
+private
+
+def bid_params
+	params.require(:bid).permit(:amount)
+end
+
+def find_bid
+	@bid = Bid.find_by(id: params[:id])
+
+end
+
+def find_product
+	@product = Product.find_by(id: params[:product_id])
+end
+def time_condition
+	if Time.now < @product.deadline
 				@bid = Bid.new
 				@bid.amount = params[:quantity].to_i
 				@bid.product_id = params[:product_id].to_i
@@ -36,24 +68,6 @@ class BidsController < ApplicationController
 				else
 					redirect_to product_path(@product), notice: "Too late to place your bet!"
 				end
-			end
-		
-
-	end
-
-private
-
-def bid_params
-	params.require(:bid).permit(:amount)
-end
-
-def find_bid
-	@bid = Bid.find_by(id: params[:id])
-
-end
-
-def find_product
-	@product = Product.find_by(id: params[:product_id])
 end
 
 end
